@@ -41,14 +41,29 @@ public class Main {
 
 
         System.out.println("//METODA EULERA//");
+        for(int i=0; i<N; i++)
+        {
+            System.out.println("y"+i+" = "+eulerMethodArray[i]);
+        }
+        System.out.println("Dokładnosc rozwiązania:");
         differentialEquation.solutionPrecision(eulerMethodArray);
         System.out.println();
 
         System.out.println("//ZMODYFIKOWANA METODA EULERA//");
+        for(int i=0; i<N; i++)
+        {
+            System.out.println("y"+i+" = "+modifiedEulerMethodArray[i]);
+        }
+        System.out.println("Dokładnosc rozwiązania:");
         differentialEquation.solutionPrecision(modifiedEulerMethodArray);
         System.out.println();
 
         System.out.println("//METODA HEUNA//");
+        for(int i=0; i<N; i++)
+        {
+            System.out.println("y"+i+" = "+heunMethodArray[i]);
+        }
+        System.out.println("Dokładnosc rozwiązania:");
         differentialEquation.solutionPrecision(heunMethodArray);
 
     }

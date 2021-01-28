@@ -1,6 +1,7 @@
 package Algorithm;
 
 import static java.lang.Math.abs;
+import static java.lang.Math.max;
 import static java.lang.Math.pow;
 
 public class DifferentialEquation {
@@ -23,9 +24,8 @@ public class DifferentialEquation {
 
         //Exact equation solution
         for (int i = 0; i < N; i++) {
-            //exactSolutionArray[i] = a + (i+1) * h;
+            exactSolutionArray[i] = a + (i+1) * h;
             //exactSolutionArray[i] = pow(exactSolutionArray[i],2) + exactSolutionArray[i] + 1;
-            exactSolutionArray[i] = pow(exactSolutionArray[i],2) + exactSolutionArray[i] - 1;
             exactSolutionArray[i] = pow(exactSolutionArray[i],6) + 4 * pow(exactSolutionArray[i],4) - pow(exactSolutionArray[i],2) + 2;
         }
     }
@@ -33,15 +33,16 @@ public class DifferentialEquation {
     public void solutionPrecision (double[] y){
         for (int i=0; i < N; i++)
         {
-            System.out.println(abs(y[i] - exactSolutionArray[i]));
+            System.out.println("y"+i+" = "+abs(y[i] - exactSolutionArray[i]));
         }
     }
 
     public double solveFunction(double x, double y) {
-        //double sqrtx = y - x - 1;
-        //return 1 + 2 * pow(sqrtx,0.5);
+        /*double sqrtx = y - x - 1;
+        return 1 + 2 * pow(sqrtx,0.5);*/
         double sqrtx = pow(x,6) + 4 * pow(x,4) + 2 - y;
-        return 6 * pow(x,5) + 16 * pow(x,3) - 2 * pow(sqrtx,0.5);
+        sqrtx = Math.sqrt(sqrtx);
+        return 6 * pow(x,5) + 16 * pow(x,3) - 2 * sqrtx;
     }
 
     public double[] eulerMethod() {
